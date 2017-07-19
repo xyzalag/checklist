@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Check List</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Petit+Formal+Script&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bubbler+One&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+  <link rel="shortcut icon" href="images/logo.png"/>
+</head>
+<body>
+<h1 class="title">CHECK LIST</h1>
+<h2 class="subtitle">STAY PRODUCTIVE</h2>
+<!--CHECK LIST-->
+ <div class="wrapper">
+    <h3 id="list-date"></h3>
+    <p></p>
+    <ul class="plates">
+      <li></li>
+    </ul>
+    <form class="add-items">
+      <input type="text" name="item" placeholder="Enter Next Task..." required>
+      <input type="submit" value=" +Add Task" class="list-buttons">
+    </form>
+      <button id="clear-items" class="list-buttons"><span class="lnr lnr-magic-wand"></span> Clear All!
+      </button>
+      <button id="check-all" class="list-buttons"><span class="lnr lnr-star"></span> Check All!</button>
+      <button id="get-quote" class="list-buttons">Random Quote!</button>
+  </div>
+
+<!--CHECK ALL POP UP-->
+ <div id="checkAll-modal" class="checkAll-modal">
+
+   <div class="modal-content">
+     <div class="modal-header">
+       <span class="close">&times;</span>
+       <h2>You made it ! Who is the most awesome persone today?</h2>
+     </div>
+     <div class="modal-body">
+       <img src="images/highfive.jpg" class="modal-img"/>
+     </div>
+     <div class="modal-footer">
+       <h3>Seriously, you should be proud of yourself!</h3>
+     </div>
+   </div>
+ </div>
+
+<!--CLEAR ALL POP UP-->
+ <div id="clearAll-modal" class="clearAll-modal">
+
+   <div class="modal-content">
+     <div class="modal-header">
+       <span class="close">&times;</span>
+       <h2>Hey, what about a new list, huh ?</h2>
+     </div>
+     <div class="modal-body">
+       <img src="images/planner.jpg" class="modal-img"/>
+     </div>
+     <div class="modal-footer">
+       <h3>Remember... A goal without a plan is just a wish!</h3>
+     </div>
+   </div>
+ </div>
+
+<!--RANDOM QUOTE GENERATOR POP UP-->
+ <div id="quote-modal" class="quote-modal">
+   <div class="modal-content" id='quote-content'>
+     <div class="modal-header">
+       <span class="close">&times;</span>
+       <h2>Here is a very random motivational quote for you: </h2>
+     </div>
+     <div class="modal-body" id="quote-display">
+     </div>
+   </div>
+ </div>
+<script src="script.js"></script>
+<script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script><!--LINEAR INCONS-->
+
+</body>
+</html>
