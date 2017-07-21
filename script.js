@@ -1,5 +1,5 @@
 
-var addItems = document.querySelector('.add-items');
+const addItems = document.querySelector('.add-items');
 const itemsList = document.querySelector('.plates')
 let items = JSON.parse(localStorage.getItem('items')) || [];
 const clearItems = document.querySelector('#clear-items');
