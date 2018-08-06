@@ -1,5 +1,5 @@
 // Get a date
-var d = new Date();
+const d = new Date();
 document.getElementById('list-date').innerHTML = d.toDateString();
 
 
@@ -28,7 +28,7 @@ const checkListController = (function() {
 
   let items = JSON.parse(localStorage.getItem('items')) || [];
 
-  // add tasks to the list and local storage
+  // addr  tasks to the list and local storage
   function addItem(e) {
     e.preventDefault();
     const text = (this.querySelector('[name=item]')).value;
@@ -79,9 +79,8 @@ const checkListController = (function() {
   // remove all the tasks
   function removeAll(e) {
     items = [];
-    var itemsToRemove = document.querySelector('ul');
-    while (itemsToRemove.hasChildNodes()) {
-      itemsToRemove.removeChild(itemsToRemove.firstChild);
+    while (elementsUI.itemsList.hasChildNodes()) {
+      elementsUI.itemsList.removeChild(elementsUI.itemsList.firstChild);
     };
     updateList(items);
     createModal(elementsUI.removeAllModal);
