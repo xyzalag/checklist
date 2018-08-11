@@ -2,17 +2,15 @@
 const d = new Date();
 document.getElementById('list-date').innerHTML = d.toDateString();
 
-
-const createModal = function(modal) {
+const createModal = (modal) => {
   modal.style.display = 'block'; 
 
-  window.onclick = function (e) {
+  window.onclick = (e) => {
       if (e.target == modal || e.target.matches('span')) {
         modal.style.display = 'none'; // hide modal 
       }
     }
 };
-
 
 const checkListController = (function() {
 
@@ -88,35 +86,39 @@ const checkListController = (function() {
 
   // check all the tasks
   function checkAll(e){
-    items.forEach(e => {e.done = true});
+    items.forEach((e) => e.done = true);
     updateList(items, elementsUI.itemsList);
     createModal(elementsUI.checkAllModal);
+  };
+
+  // task counter
+  function taskCounter(tasksArr) {
+    let countDone = 0;
+    tasksArr.forEach((e) => {
+      if (e.done === true) countDone++;
+    });
+    elementsUI.counter.innerText = `${countDone}/${tasksArr.length} completed`;
+  };
+
+  // display the button only if the list is not empty
+  function toggleButtons(items, btnEl, btnFn) {
+    if (items.length !== 0) { 
+      btnEl.style.display = 'inline-block';
+      btnEl.addEventListener('click', btnFn);
+    } else {
+      btnEl.style.display = 'none';
+    }
   };
 
   function updateList(items) {
     populateList(items, elementsUI.itemsList);
     localStorage.setItem('items',JSON.stringify(items));
     taskCounter(items);
-      if (items.length !== 0) {  // display the button only if the list is not empty
-        elementsUI.removeAllBtn.style.display = 'inline-block';
-        elementsUI.checkAllBtn.style.display = 'inline-block';
-        elementsUI.removeAllBtn.addEventListener('click', removeAll);
-        elementsUI.checkAllBtn.addEventListener('click', checkAll);
-      } else {
-        elementsUI.removeAllBtn.style.display = 'none';
-        elementsUI.checkAllBtn.style.display = 'none';
-      }
+    toggleButtons(items, elementsUI.removeAllBtn, removeAll);
+    toggleButtons(items, elementsUI.checkAllBtn, checkAll);
   };
 
-  function taskCounter(tasksArr) {
-    let countDone = 0;
-    tasksArr.forEach(e => {
-      if (e.done === true) countDone++;
-    });
-    elementsUI.counter.innerText = `${countDone}/${tasksArr.length} completed`;
-  };
-
-  // EVENTS LISTENERS
+  //  INIT 
   elementsUI.addItemsBtn.addEventListener('submit', addItem);
   elementsUI.itemsList.addEventListener('click', toggleDone);
   updateList(items);
